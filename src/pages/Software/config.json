@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "required": ["fieldType", "title"],
+  "properties": {
+  
+    "title": {
+      "type": "string",
+      "title": "Site title"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "mobile": {
+      "type": "string",
+      "title": "Mobile"
+    },
+    "mobile2": {
+      "type": "string",
+      "title": "Mobile2"
+    }
+   
+  
+  },
+  "dependencies": {
+    "fieldType": {
+      "oneOf": [
+        {
+          "properties": {
+            "fieldType": {
+              "enum": ["Select"]
+            },
+            "options": {
+              "type": "array",
+              "title": "Field from select",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": ["options"]
+        },
+        {
+          "properties": {
+            "fieldType": {
+              "enum": ["Input", "CheckBox", "File", "Date"]
+            }
+          }
+        }
+      ]
+    },
+    "check_id": {
+      "oneOf": [
+        {
+          "properties": {
+            "check_id": {
+              "enum": [false]
+            },
+            "id": {
+              "type": "string",
+              "title": "Field ID"
+            }
+          },
+          "required": ["id"]
+        },
+        {
+          "properties": {
+            "check_id": {
+              "enum": [true]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
